@@ -60,8 +60,8 @@ void setStockGroup(map<string, Stock> mymap) {
     sort(A.begin(), A.end(), cmp);
 
     int count = 0;
-    int a = 3;
-    int b = 7;
+    int a = 300;
+    int b = 600;
     for (int i = 0; i < A.size(); i++) {
         if (count <= a) {
             beat.push_back(A[i].second);
