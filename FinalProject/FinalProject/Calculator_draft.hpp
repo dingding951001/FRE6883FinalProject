@@ -24,7 +24,7 @@ typedef vector<Vector> Matrix;
 
 double mean(const Vector &v){
     double summ = 0.0;
-    for_each(v.begin(), v.end(), [&] (int n) {
+    for_each(v.begin(), v.end(), [&] (double n) {
         summ += n;});
     return summ/v.size();
 }
