@@ -28,7 +28,7 @@ private:
 	vector<Stock> meet;
 	vector<Stock> miss;
 public:
-	void setStockGroup(map<string, Stock> mymap);
+	void setStockGroup(map<string, Stock> &mymap);
 	vector<Stock> getBeat() { return beat; }
 	vector<Stock> getMeet() { return meet; }
 	vector<Stock> getMiss() { return miss; }
