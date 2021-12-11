@@ -15,6 +15,11 @@ using namespace std;
 
 enum SurprisingGroup{BEAT, MISS, MEET};
 
+struct StockPrice {
+    vector<string> dates;
+    vector<double> prices;
+};
+
 class Stock {
 private:
     string ticker;
@@ -45,12 +50,8 @@ public:
     SurprisingGroup getSurprisingGroup(){return surprisingGroup;}
     vector<double> calculateCumulativeDailyReturn() const;
     vector<double> calculateDailyReturn(const int n) const;
+    vector<double> calculateAbnormalDailyRetrun(const StockPrice& benchmark, const int n) const;
     void displayInformation() const;
-};
-
-struct StockPrice {
-    vector<string> dates;
-    vector<double> prices;
 };
 
 struct EarningInfo {
