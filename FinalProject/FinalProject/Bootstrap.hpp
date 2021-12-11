@@ -10,10 +10,15 @@
 
 #include <stdio.h>
 #include <vector>
-#include "Stock.h"
+#include "Stock.hpp"
+#include <iostream>
+#include <vector>
+#include <random>
+#include <map>
+
 using namespace std;
 
 
-map<string, vector<StockData*>> bootstrapping(vector<StockData*> stock_list, int i);
+map<string, vector<Stock*>> bootstrapping(vector<Stock*> stock_list, int i);
 
 #endif /* Bootstrap_hpp */
