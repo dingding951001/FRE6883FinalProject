@@ -42,6 +42,7 @@ public:
     void setSurprisingGroup(SurprisingGroup surprisingGroup) {
         this->surprisingGroup = surprisingGroup;
     }
+    SurprisingGroup getSurprisingGroup(){return surprisingGroup;}
     vector<double> calculateCumulativeDailyReturn() const;
     vector<double> calculateDailyReturn(const int n) const;
     void displayInformation() const;
