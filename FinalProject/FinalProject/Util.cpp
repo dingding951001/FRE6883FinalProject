@@ -50,7 +50,7 @@ string TranslateDate(string raw) {
     return str;
 }
 
-void setStockGroup(map<string, Stock> mymap) {
+void setStockGroup(map<string, Stock> &mymap) {
     vector<pair<string, Stock>> A;
     map<string, Stock>::iterator itr;
     for (itr = mymap.begin(); itr != mymap.end(); itr++) {
