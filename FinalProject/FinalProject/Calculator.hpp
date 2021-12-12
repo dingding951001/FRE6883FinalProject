@@ -25,7 +25,7 @@ typedef vector<Vector> Matrix;
 Vector operator+(Matrix &m,Vector &v);
 Vector operator+(Vector &AAR, double num);
 Vector AAR(Matrix &m);
-Vector CAAR(const Vector &AAR_v);
+Vector CAAR(const Vector &AAR);
 
 Vector mean(const Matrix &m2);
 Vector stdev(const Matrix &m2);
