@@ -25,20 +25,24 @@ Vector operator+(Matrix &m, Vector &v){
     return v;
 }
 
+Vector operator+(Vector &AAR, double num){
+    Vector v(AAR.size());
+    for (int i=0;i<AAR.size();i++) {
+        num += AAR[i];
+        v[i] = init;
+    }
+}
+
 Vector AAR(Matrix &m){
     Vector v(m[0].size());//也就是size 2N
     return m+v;
 }
 
 
+
 Vector CAAR(Vector &AAR){
     double init = 0.0;
-    Vector v(AAR.size()); //2N
-    for (int i=0;i<AAR.size();i++) {
-        init += AAR[i];
-        v[i] = init;
-    }
-    return v;
+    return AAR+init;
 };
 //---------------------------------
 Vector mean(const Matrix &m2){
