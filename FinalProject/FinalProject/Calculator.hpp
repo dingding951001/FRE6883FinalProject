@@ -23,6 +23,7 @@ typedef vector<double> Vector;
 typedef vector<Vector> Matrix;
 
 Vector operator+(Matrix &m,Vector &v);
+Vector operator+(Vector &AAR, double num);
 Vector AAR(Matrix &m);
 Vector CAAR(const Vector &AAR_v);
 
