@@ -18,7 +18,6 @@
 
 using namespace std;
 
-
-map<string, vector<Stock*>> bootstrapping(vector<Stock*> stock_list, int i);
+vector<vector<double>> bootstrapping(vector<Stock*> stocks,const StockPrice& benchmark, const int n)；
 
 #endif /* Bootstrap_hpp */
