@@ -10,72 +10,29 @@
 #include <iostream>
 #include <vector>
 #include <random>
-#include <map>
 
 
 
-bool myfunction(pair<Stock*, double> a, pair<Stock*, double> b)
-{
-    return a.second < b.second;
-}
 
-
-map<string, vector<Stock*>> bootstrapping(vector<Stock*> stocks, int seed)
+vector<vector<double>> bootstrapping(vector<Stock*> stocks,const StockPrice& benchmark, const int n)
 {
     int bootstrap_num = 80;
     int len = stocks.size();
     
-    map<string, vector<Stock*>> bootstrapping_result;
+    vector<vector<double>> bootstrapping_result;
     
-    default_random_engine random(time(NULL) + seed);
+    std::default_random_engine random(time(NULL));
     std::uniform_real_distribution<double> dist(0.0, 1.0);
+    std::uniform_int_distribution<double> index_dist(0, len - 1);
     
     //declaring vector of pairs of stock data
-    vector< pair<Stock*,double> > vect;
-    for (int i = 0; i < len; i++)
-    {
-        vect.push_back(pair<Stock*,double>(stocks[i], dist(random)));
-    }
-
-    sort(vect.begin(), vect.end(), myfunction);
     
-    // Miss
-    vector<Stock*> miss;
-    for (auto iter : vect)
+    for (int i = 0; i < bootstrap_num; i++)
     {
-        if ((iter.first->getSurprisingGroup() == MISS))
-        {
-            miss.push_back(iter.first);
-            if (miss.size() == bootstrap_num) break;
-        }
+        bootstrapping_result.push_back(stocks[dist(random)]->calculateAbnormalDailyRetrun(benchmark,n));
     }
+  
     
-    // Meet
-    vector<Stock*> meet;
-    for (auto iter : vect)
-    {
-        if ((iter.first->getSurprisingGroup() == MEET) )
-        {
-            meet.push_back(iter.first);
-            if (meet.size() == bootstrap_num) break;
-        }
-    }
-
-
-    // Beat
-    vector<Stock*> beat;
-    for (auto iter : vect)
-    {
-        if ((iter.first->getSurprisingGroup() == BEAT) )
-        {
-            beat.push_back(iter.first);
-            if (beat.size() == bootstrap_num) break;
-        }
-    }
-
-    bootstrapping_result["MISS"] = miss;
-    bootstrapping_result["MEET"] = meet;
-    bootstrapping_result["BEAT"] = beat;
-
     return bootstrapping_result;
 }
+
