@@ -29,8 +29,9 @@ Vector operator+(Vector &AAR, double num){
     Vector v(AAR.size());
     for (int i=0;i<AAR.size();i++) {
         num += AAR[i];
-        v[i] = init;
+        v[i] = num;
     }
+    return v;
 }
 
 Vector AAR(Matrix &m){
