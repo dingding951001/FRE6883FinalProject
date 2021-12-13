@@ -14,7 +14,7 @@
 
 
 
-vector<vector<double>> bootstrapping(vector<Stock*> stocks,const StockPrice& benchmark, const int n)
+vector<vector<double>> bootstrapping(vector<Stock> stocks,const StockPrice& benchmark, const int n)
 {
     int bootstrap_num = 80;
     int len = stocks.size();
@@ -32,7 +32,7 @@ vector<vector<double>> bootstrapping(vector<Stock*> stocks,const StockPrice& ben
         if(! setOfnum.insert(temp).second){
             continue;
         }else{
-            bootstrapping_result.push_back(stocks[temp]->calculateAbnormalDailyRetrun(benchmark,n));
+            bootstrapping_result.push_back(stocks[temp].calculateAbnormalDailyRetrun(benchmark,n));
             index++;
         }
     }
