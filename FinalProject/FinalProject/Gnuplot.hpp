@@ -16,7 +16,8 @@
 using namespace std;
 
 
-void Gnuplot_CAAR(map<string, vector<double>> research_result, string type);
+vector<Matrix> get_computation_result(vector<Stock*> stocks,const StockPrice& benchmark, const int n);
+void Gnuplot_CAAR(vector<Matrix> computation_result);
 
 
 #endif /* Gnuplot_hpp */
