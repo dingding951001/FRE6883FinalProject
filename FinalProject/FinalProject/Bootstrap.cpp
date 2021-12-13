@@ -10,7 +10,7 @@
 #include <iostream>
 #include <vector>
 #include <random>
-#include <map>
+#include <set>
 
 
 
@@ -18,6 +18,8 @@ vector<vector<double>> bootstrapping(vector<Stock*> stocks,const StockPrice& ben
 {
     int bootstrap_num = 80;
     int len = stocks.size();
+    set<int> setOfnum;
+    int index = 0;
     
     vector<vector<double>> bootstrapping_result;
     
@@ -25,11 +27,16 @@ vector<vector<double>> bootstrapping(vector<Stock*> stocks,const StockPrice& ben
     std::uniform_int_distribution<double> index_dist(0, len - 1);
     
     //declaring vector of pairs of stock data
-    
-    for (int i = 0; i < bootstrap_num; i++)
-    {
-        bootstrapping_result.push_back(stocks[index_dist(random)]->calculateAbnormalDailyRetrun(benchmark,n));
+    while(index<bootstrap_num){
+        int temp =index_dist(random);
+        if(! setOfnum.insert(temp).second){
+            continue;
+        }else{
+            bootstrapping_result.push_back(stocks[temp]->calculateAbnormalDailyRetrun(benchmark,n));
+            index++;
+        }
     }
+ 
   
     
     return bootstrapping_result;
